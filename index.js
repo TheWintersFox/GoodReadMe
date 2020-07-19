@@ -99,6 +99,13 @@ function init() {
         } else {
             answers.license = "This project is currently not licensed."
         }
+
+        if (answers.contributors === "yes") {
+            answers.contributors = yesContributors;
+        } else {
+            answers.contributors = noContributors;
+        }
+        writeToFile("sampleREADME.md", answers);
     });
 }
     // function call to initialize program
