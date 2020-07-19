@@ -4,6 +4,10 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown")
 
 // licenses
+const apache = { text: "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).", badge: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)' };
+const gnu = { text: "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).", badge: '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)' };
+const mit = { text: "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).", badge: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)' };
+const isc = { text: "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).", badge: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)' };
 
 // contributors
 const yesContributors = "If you would like to contribute to this project, please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) guidelines."
@@ -24,22 +28,22 @@ const questions = [
     {
         type: "input",
         name: "description",
-        message:  "Please provide a brief description of your project."
+        message: "Please provide a brief description of your project."
     },
     {
         type: "input",
         name: "installation",
-        message:  "What do you need to install in order for your application to work?"
+        message: "What do you need to install in order for your application to work?"
     },
     {
         type: "input",
         name: "usage",
-        message:  "How do you use your application?"
+        message: "How do you use your application?"
     },
     {
         type: "input",
         name: "tests",
-        message:  "How would you run tests on this project?"
+        message: "How would you run tests on this project?"
     },
     {
         type: "list",
@@ -81,10 +85,21 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
-inquirer.prompt(questions).then(function(answers)) {
-    console.log(answers);
-
+    inquirer.prompt(questions).then(function (answers) {
+        console.log(answers);
+        //check for what license the user chose
+        if (answers.license === "Apache License 2.0") {
+            answers.license = apache;
+        } else if (answers.license === "GNU GPLv3") {
+            answers.license = gnu;
+        } else if (answers.license === "MIT") {
+            answers.license = mit;
+        } else if (answers.license === "ISC") {
+            answers.license = isc;
+        } else {
+            answers.license = "This project is currently not licensed."
+        }
+    });
 }
-
-// function call to initialize program
-init();
+    // function call to initialize program
+    init();
