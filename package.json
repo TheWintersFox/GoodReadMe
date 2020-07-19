@@ -1,0 +1,22 @@
+{
+  "name": "goodreadmegenerator",
+  "version": "1.0.0",
+  "description": "goodreadmegenerator will create a template README.md file from the trilogy guidelines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheWintersFox/GoodReadMe.git"
+  },
+  "author": "Luke J. Evans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheWintersFox/GoodReadMe/issues"
+  },
+  "homepage": "https://github.com/TheWintersFox/GoodReadMe#readme",
+  "dependencies": {
+    "inquirer": "^7.3.2"
+  }
+}
